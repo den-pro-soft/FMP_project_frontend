@@ -1,0 +1,8 @@
+.promo-code-form {
+    margin-top: 50px;
+    .btn span {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}

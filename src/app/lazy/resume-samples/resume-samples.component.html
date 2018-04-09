@@ -1,0 +1,61 @@
+<div class="resume-samples-page">
+  <div class="container">
+    <div class="resume-samples-senior resume-samples-item">
+      <div class="resume-samples-header">
+        <h2 [innerHTML]="seniorPage.title"></h2>
+      </div>
+      <div class="resume-samples-body">
+        <div class="resume-samples-panel">
+          <div [innerHTML]="seniorPage.content"></div>
+          <div class="resume-samples-list">
+            <ul class="resume-samples-ul">
+              <li *ngFor="let resume of seniorSamples" class="resume-item-li">
+                <resume-item [resume]="resume"></resume-item>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div [innerHTML]="seniorPage.get_started"></div>
+          <div class="resume-samples-service-wrapper">
+            <a class="resume-samples-service" href="#" [innerHTML]="seniorPage.service_button"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-samples-mid resume-samples-item">
+      <div class="resume-samples-header">
+        <h2 [innerHTML]="entryPage.title"></h2>
+      </div>
+      <div class="resume-samples-body">
+        <div class="resume-samples-panel">
+          <div [innerHTML]="entryPage.content"></div>
+          <div class="resume-samples-list">
+            <ul class="resume-samples-ul">
+              <li *ngFor="let resume of entrySamples" class="resume-item-li">
+                <resume-item [resume]="resume"></resume-item>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div [innerHTML]="entryPage.get_started"></div>
+          <div class="resume-samples-service-wrapper">
+            <a class="resume-samples-service" href="#" [innerHTML]="entryPage.service_button"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

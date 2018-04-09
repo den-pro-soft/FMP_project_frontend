@@ -1,0 +1,60 @@
+<div class="career-advice-page tabs-carousel">
+
+  <fmp-career-advice-tabs
+    [articleCategories]="articleCategories"
+    [selectedPackage]="selectedPackage"
+    (onMenuOpen)="onMenuOpen($event)"
+    (onLinkClick)="openLink($event)">
+  </fmp-career-advice-tabs>
+
+  <article class="career-advice-holder" [ngClass]="{'move-down': subNavState}">
+    <div [hidden]="!searchTxt || searchTxt.length==0"> 
+        <div class="article-search-result-count container-md articles-card-holder" [hidden]="articles.length==0">
+            {{total_count}} ARTICLES FOUND FOR YOU
+        </div>
+        <div class="article-search-result-card-no-exist text-center" [hidden]="articles.length>0">
+            <p> We looked and looked, but sadly have come back empty handed with anything that matches your search. </p>
+            <p> Maybe try again with a slightly different search? </p>
+        </div>
+    </div>
+    <div [hidden]="searchTxt && searchTxt.length>0">
+        <header class="title-description">
+        <h2 *ngIf="content?.title" [innerHTML]="content?.title" style="color: #08618d;"></h2>
+        <p *ngIf="content?.description" [innerHTML]="content?.description" style="color: #08618d;"></p>
+        </header>
+
+        <fmp-template-carousel-component
+        class="carousel-component"
+        [type]="'career-advice'"
+        [slidesNumber]="topArticles?.length / 2"
+        [title]="pageContent?.title"
+        [subTitle]="pageContent?.subTitle"
+        [sliderItems]="topArticles"
+        (onLikeToggle)="likeSelectedArticle($event, true)"
+        (openArticle)="openArticle($event)">
+        </fmp-template-carousel-component>
+    </div>
+
+    <div class="container-md">
+      <articles-cards-component
+        [isAuth]="false"
+        [articles]="articles"
+        (onArticleLike)="likeSelectedArticle($event)"
+        (onArticleOpen)="openArticle($event)">
+      </articles-cards-component>
+    </div>
+
+    <ngb-pagination
+      *ngIf="collectionSize > defaultLimit"
+      class="pagination-custom"
+      [collectionSize]="collectionSize"
+      [(page)]="currentPage"
+      [pageSize]="defaultLimit"
+      [maxSize]="isMobileMode ? 1 : 5"
+      [rotate]="true"
+      (pageChange)="pageSelected()">
+    </ngb-pagination>
+
+  </article>
+
+</div>

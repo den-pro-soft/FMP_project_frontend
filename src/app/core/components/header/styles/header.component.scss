@@ -1,0 +1,414 @@
+@import "../../../../styles/custom/variables";
+@import "../../../../styles/custom/buttons";
+.account-user-desktop {
+  left: auto;
+  
+  div.user-info {
+    p {
+      line-height: 1.44;
+    }
+  }
+}
+.myjob_item{
+  margin-top: 5px;
+  white-space: nowrap;
+}
+.logo-user-desk-margin{
+  margin-left: 12px;
+  margin-bottom: 3px;
+}
+.main-header {
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  color: $light;
+  width: 100%;
+  height: $header-height;
+
+  + main {
+    padding-top: $header-height;
+
+    @media (min-width: $point) {
+      padding-top: 0;
+    }
+  }
+
+  @media (min-width: $point) {
+    &.main-header-reg {
+
+      .header-desktop.header-reg {
+        padding-top: 5px !important;
+        display: block;
+      }
+    }
+    &.main-header-unreg {
+      height: $header-height-desk;
+      
+      .header-desktop.header-unreg {
+        padding-top: 5px !important;
+        display: block;
+        padding-bottom: 8px;
+      }
+    }
+  }
+
+  &.main-header-reg {
+    .header-desktop.header-reg {
+      padding-top: 5px !important;
+      height: $header-height-desk;
+      background: $brand-secondary;
+    }
+  }
+
+  &-unreg-blue {
+
+    .header-desktop.header-unreg {
+      background: $brand-secondary-light;
+
+      .btn.btn-primary-transparent {
+        color: $light;
+        @extend .btn-outline-light-lg;
+      }
+    }
+  }
+  .btn-entrance {
+    width: 170px !important;
+    padding: 0 40px !important;
+    @media (max-width: 700px) {
+      padding: 0px 20px !important;
+      width: 120px !important;
+      height: 40px !important;
+      line-height: 100% !important;
+      font-size: 18px !important;
+    }
+    @media (max-width: 350px) {
+      padding: 0px 15px !important;
+      width: 90px !important;
+      height: 35px !important;
+      line-height: 100% !important;
+      font-size: 18px !important;
+    }
+  }
+  &.main-header-unreg-lightest {
+    .header-desktop.header-unreg {
+      background: $light;
+      color: $brand-secondary;
+      transform: translate3d(0, 0, 0);
+      border-bottom: 2px solid #0B5782;
+
+      .btn.btn-primary-transparent {
+        background: $brand-primary;
+        border: 1px solid $brand-primary;
+
+        &:hover {
+          background: transparent;
+          color: $brand-secondary;
+        }
+      }
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: .3s;
+
+    @media (min-width: $point) {
+      &:not(.btn) {
+        transition: 0s;
+      }
+    }
+  }
+
+  .nav-menu {
+    font-size: 1.222rem;
+
+    a {
+      &:hover,
+      &:active,
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+
+
+  &.main-header-reg {
+    .nav-menu {
+      @media (min-width: $point) {
+        width: 420px;
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+.header-mobile {
+
+  @media (min-width: $point) {
+    display: none;
+  }
+
+  .logo-burger {
+    height: 100%;
+    padding: 12px 10px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $brand-secondary;
+  }
+}
+
+.header-desktop {
+  display: none;
+
+  .container {
+    position: relative;
+  }
+
+  @media (min-width: $point) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    transition: .5s;
+  }
+
+  @media (min-width: $point-lg + 20px) {
+    padding: 0;
+  }
+
+  .logo-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+
+    .btn {
+      margin-left: 20px;
+      margin-top: 5px;
+
+      @media (min-width: 1230px) {
+        margin-left: 44px;
+      }
+    }
+  }
+
+  &.header-reg {
+    .logo-nav {
+      justify-content: space-between;
+    }
+  }
+}
+
+//-------------------------------------------------Search box on header bar
+.search-img {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.bottom_search_box_button_group{
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    height: 60px;
+    background: #229ACF;
+    width: 100%;
+    text-align: center;
+  }
+}
+.bottom_search_box_button{
+  width: 49%;
+  display: inline-block;
+  padding-top: 15px;
+  cursor: pointer;
+  height: 100%;
+}
+.bottom_search_box_button:hover{
+  background: #49ABD7;
+}
+.search-box {
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 60px;
+  }
+  @media (min-width: 768px) {
+    position: absolute;
+    top: $header-height-desk;
+  }
+  width: 100%;
+  height: 70px;
+  background-color: #FFF;
+  border-top: 1px solid #1dbff0;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  opacity: 1;
+  -webkit-animation: display-none-transition 1s both;
+  animation: display-none-transition 1s both;
+  z-index: 1;
+  .search-field {
+    width: 200px;
+    height: 40px;
+  }
+  @-webkit-keyframes display-none-transition {
+    0% {
+      opacity: 0;
+    }
+  }
+  @keyframes display-none-transition {
+    0% {
+      opacity: 0;
+    }
+  }
+    
+}
+
+.inner_search_filter_box{
+  max-width: 1200px;
+  padding: 0px 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.input_search_wrapper{
+  width: 78%;
+  display: inline-block;
+}
+.input_search_wrapper img{
+  margin-right: 20px;
+}
+.input_search_wrapper input{
+  height: 100%;
+  padding-bottom: 3px;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  outline: 0;
+  font-family: Georgia,serif;
+  font-style: italic;
+  font-size: 21px;
+  border-bottom: 1px solid silver;
+  color: #333;
+  @media (min-width: 900px) {
+    width: 400px !important;
+  }
+  @media (min-width: 600px) {
+    width: 300px !important;
+  }
+  @media (max-width: 600px) {
+    width: 200px !important;
+    font-size: 15px;
+  }
+  @media (max-width: 400px) {
+    width: 170px !important;
+    font-size: 12px;
+    margin-left: -20px;
+  }
+  
+}
+.input_search_wrapper_btn{
+  width: 20%;
+  text-align: right;
+  // display: inline-block;
+  float: right;
+}
+.input_search_wrapper_btn input{
+  // line-height: 25px;
+  // border-radius: 22px;
+  // border: 1px solid #1dbff0;
+  // background: #1dbff0;
+  // transition: background 200ms ease-out;
+  // display: inline-block;
+  // text-align: center;
+  // text-transform: uppercase;
+  // color: #fff;
+  // letter-spacing: 1px;
+  // cursor: pointer;
+  // @media (min-width: 900px) {
+  // font-size: 1rem;
+  // padding: 10px 50px;
+  // font-weight: 500;
+  // }
+  // @media (min-width: 600px) {
+  //   font-size: 15px;
+  //   padding: 5px 25px;
+  //   font-weight: 600;
+  // }
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 5px 15px;
+    font-weight: 600;
+    margin-left: -50px;
+  }
+}
+
+.user_login_top_header{
+  padding-top: 5px!important;
+  background: #FFF !important;
+  color: #08618d;
+  padding-bottom: 5px !important;
+  border-bottom: 2px solid #08618d;
+}
+
+// .account_user_quote{
+//   visibility: visible !important;
+//   opacity: 1 !important;
+//   transform: scale(1) !important;
+//   width: 350px !important;
+//   position: absolute !important;
+//   margin-top: 5px !important;
+//   min-width: 350px !important;
+// }
+.account_user_quote{
+  display: block !important;
+  position: fixed !important;
+  bottom: 0px;
+  background: rgba(8,97,141,0.7 );
+  text-align: left;
+  // min-width: 100% !important;
+  // height: 80px;
+  left: 0px;
+  width: 100%;
+  // top: calc(100vh - 80px);
+  color: #FFF;
+  padding: 15px;
+}
+.account-user-info-set{
+  // width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-info-email-content{
+  word-wrap: break-word !important;
+  padding-left: 60px;
+  font-size: 20px;
+  font-style: italic;
+  // padding-top: 10px;
+}
+
+.account_user_quote_info_holder{
+  border-bottom: none !important;
+  width: 100% !important;
+}
+
+.account_user_quote_close_btn{
+  float: left;
+  color: #FFF;
+  padding-left: 15px;
+  margin-top: 7px;
+}
+.user-info-name{
+  font-size: 1.2rem;
+}
+//-------------------------------------------------
+
+@import "elements/burger";
+@import "elements/account";
+@import "elements/nav";

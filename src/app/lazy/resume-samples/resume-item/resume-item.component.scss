@@ -1,0 +1,56 @@
+@import '../../../styles/custom/variables';
+// import additional google fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.resume-item-wrapper {
+  border: 1px solid #e4e4e4;
+  background: #fdfdfd;
+  padding: 20px;
+
+  @media (min-width: 1030px) {
+    height: 180px;
+  }
+
+  .img-thumbnail {
+    padding: 4px;
+    line-height: 1.6;
+    background-color: #F1F1F1;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    transition: all 0.2s ease-in-out;
+    height: auto;
+    display: inline-block;
+  }
+
+  h4 {
+    font-family: 'Roboto Slab', serif;
+    color: #4d4d4d;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 20px;
+    line-height: 1.2;
+  }
+
+  .btn-view-resume {
+    padding: 5px 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #333;
+    background-color: white;
+    border: 1px solid #ccc;
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+      background-color: $brand-secondary;
+      border-color: $brand-secondary;
+    }
+  }
+}

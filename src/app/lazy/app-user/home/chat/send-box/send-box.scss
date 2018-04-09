@@ -1,0 +1,104 @@
+@import '../../../../../styles/custom/variables';
+
+.send-box {
+  display: block;
+
+  .message-holder {
+    flex: 1;
+    position: relative;
+
+    textarea {
+      height: 65px;
+      font-size: 0.889rem;
+
+      @media (min-width: $point) {
+        font-size: 1.111rem;
+      }
+    }
+
+    .hints {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 1px);
+      font-size: 0.72rem;
+
+      @media (min-width: $point) {
+        top: calc(100% + 5px);
+      }
+    }
+  }
+
+  .btn-group-attach-send {
+    width: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+
+    @media (min-width: $point-md) {
+      width: 83px;
+    }
+  }
+}
+
+.attach_full_sidebar{
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.selected-image-part{
+  white-space: nowrap;
+  width: auto;
+  max-height: 110px;
+}
+.attach_img_same_row{
+  display: inline-block;
+  padding: 10px;
+  padding-bottom: 30px;
+}
+.attach_img_same_row img{
+  width: 80px;
+  height: 80px;
+}
+.close_btn{
+  width: 30px !important;
+  height: 30px !important;
+  margin-left: -35px;
+  margin-top: -40px;
+  cursor: pointer;
+}
+.message_send_footer_part{
+  width: 100%;
+  clear: both;
+  display: table;
+}
+.message_send_footer_part button{
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px !important;
+  display: table-cell;
+  vertical-align: bottom;
+}
+.message_footer_textarea_part{
+  width: calc(100% - 132px) !important;
+  // height: 60px !important;
+  vertical-align: bottom;
+  font-size: 1rem !important;
+  // resize: vertical;
+  line-height: 1.2;
+  max-height: 170px;
+  overflow-y: auto;
+  padding-top: 15px;
+  height: 60px;
+}
+.attach_image_footer{
+  display: inline-block;
+  vertical-align: bottom;
+  font-weight: 600;
+  margin-left: -85px;
+  margin-bottom: -20px;
+  width: 80px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 14px;
+}

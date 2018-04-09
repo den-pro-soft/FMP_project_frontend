@@ -1,0 +1,87 @@
+<div class="custom-modal customer-modal-middle">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="'add-job'"></fmp-circle-icon-line>
+  </div>
+  <h3 class="title">{{ mode=='add'? 'Add Job' : 'Edit Job'}}</h3>
+  <!-- <p class="message-text">Please add details for the specific job of interest</p> -->
+
+  <form [formGroup]="modelForm" (submit)="saveJob()" class="form-holder">
+    <div [hidden]="!firstview">
+
+        <p class="form-group" [ngClass]="{ 'error-show' : fm.position}">
+
+            <fmp-error class="error-field" [text]="fm.position" (onErrorClick)="closeError('position')"></fmp-error>
+
+            <label class="form-group-content">
+                <!-- <span>Position:</span> -->
+                <input type="text"
+                       class="form-control-border-light"
+                       formControlName="position"
+                       placeholder="Add the title of this position">
+            </label>
+        </p>
+
+        <p class="form-group" [ngClass]="{ 'error-show' : fm.company}">
+
+            <fmp-error class="error-field" [text]="fm.company" (onErrorClick)="closeError('company')"></fmp-error>
+
+            <label class="form-group-content">
+                <!-- <span>Company:</span> -->
+                <input type="text"
+                       class="form-control-border-light"
+                       formControlName="company"
+                       placeholder="Add the name of the company">
+            </label>
+        </p>
+
+        <p class="form-group" [ngClass]="{ 'error-show' : fm.isExistJob}">
+            <fmp-error class="error-field" [text]="'Duplicate link added'" (onErrorClick)="closeError('isExistJob')"></fmp-error>
+        </p>
+        <p class="form-group" [ngClass]="{ 'error-show' : fm.link}">
+
+        <fmp-error class="error-field" [text]="fm.link" (onErrorClick)="closeError('link')"></fmp-error>
+
+        <label class="form-group-content">
+            <!-- <span>Job Link:</span> -->
+            <input type="text"
+            class="form-control-border-light"
+            formControlName="link"
+            placeholder="Add link of the original job posting">
+        </label>
+        </p>
+
+        <p class="form-group" [ngClass]="{ 'error-show' : fm.rate}" [hidden]="mode=='edit'">
+            <fmp-error class="error-field" [text]="fm.rate" (onErrorClick)="closeError('rate')"></fmp-error>
+            <input type="hidden"
+                class="form-control-border-light"
+                formControlName="rate"
+            >
+            <label class="form-group addjob_number_top_text text-center" >
+                    On a scale of 0-10, how close do your skills align with this position?
+            </label>
+            <label class="form-group" >
+                <input *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10]" type='button' [value]='number' (click)="setRate($event.target.value)"
+                [ngClass]=" ( number != 10 ? 'addjob_btn_set' : 'addjob_btn_set_last' ) + ( modelForm.get('rate').value == number ? ' add_job_btn_selected' : '' ) " >
+            </label>
+        </p> 
+        
+    </div>
+    <div [hidden]="firstview">
+        <p class="form-group" >
+            <textarea formControlName="jobdescription" class="job-add-description-text" placeholder="Add notes about this job..."></textarea>
+        </p>
+        <p class="form-group attachment-wrapper">
+            <input type="file" (change)="uploadCoverLetter($event)" id="upload_file_in_add_job"/><label for="upload_file_in_add_job" class="link link-line-remove-center job-add-upload-cover">{{coverletter}}</label>
+            <span [hidden]="!jobattach" class="job-attachment-remove" (click)="removeCoverLetter()">&nbsp;&nbsp;x</span>
+        </p>
+        
+    </div>
+ 
+    <button [hidden]="!firstview || mode=='edit'" type="button" class="btn btn-md btn-center btn-border-anim" (click)="goNextView()">Next</button>
+    <button [hidden]="firstview || mode=='edit'"  type="button" class="btn btn-md btn-center btn-border-anim job-add-detail-information-btn" (click)="firstview=true">Back</button>
+    <button [hidden]="( firstview && mode=='add' ) "  type="submit" [ngClass]="mode=='add' ? 'btn btn-md btn-center btn-border-anim job-add-detail-information-btn' : 'btn btn-md btn-center btn-border-anim'">Save</button>
+
+  </form>
+
+  <fmp-modal-close-icon (onModalClose)="cancel()"></fmp-modal-close-icon>
+</div>

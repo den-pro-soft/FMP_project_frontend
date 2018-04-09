@@ -1,0 +1,51 @@
+@import '../../../styles/custom/variables';
+.article-author-bottom-holder {
+  border-top: 2px solid #08618d;
+
+  .article-author-bottom {
+    display: flex;
+    padding: 40px 60px;
+
+    img {
+      width: 120px;
+      height: 120px;
+      flex: 0 0 120px;
+      border-radius: 50%;
+      border: 1px solid #c1d5e0;
+      margin-right: 40px;
+      margin-top: 30px;
+    }
+
+    .author-text {
+      flex: 1;
+    }
+
+    p {
+      font-family: Source Sans Pro,Helvetica,Arial,sans-serif;
+    }
+  }
+
+  @media (max-width: $tab-point) {
+    .article-author-bottom {
+      display: block;
+      padding: 40px 60px;
+
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 1px solid #c1d5e0;
+        display: block;
+        margin: 30px auto;
+      }
+
+      .author-text {
+        display: block;
+      }
+
+      p {
+        font-family: Source Sans Pro,Helvetica,Arial,sans-serif;
+      }
+    }
+  }
+}

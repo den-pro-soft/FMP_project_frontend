@@ -1,0 +1,69 @@
+<form class="send-box" [formGroup]="modelForm" (submit)="sendMessage()" *ngIf="modelForm">
+<div class="attach_full_sidebar">  
+    <div class="selected-image-part">
+        <div *ngFor="let attach of attachment" class="attach_img_same_row">
+            <img [src]="attach.preview">
+            <label class="attach_image_footer" >{{attach.file.name}}</label>
+            <img class='close_btn' src='/src/assets/images/close.png' (click)="delete_attach(attach.id)">
+        </div>
+    </div>
+</div>
+
+<div class="input-group message_send_footer_part">
+    <fmp-file-selector-component
+      [isDisabled]="isMessageSending"
+      [fileName]="fileName"
+      [isSelected]="isFileSelected"
+      (onFileSelected)="fileSelected($event)"
+      (onFileRemoved)="fileRemoved()">
+    </fmp-file-selector-component>
+      
+    <textarea
+        #sendField
+        class="form-control-border-light message_footer_textarea_part"
+        formControlName="message"
+        placeholder="Type your message"
+        [ngModel]="chatareaValue"
+        (keyup)="keyPressed($event)"
+        (ngModelChange)="changeTextarea()"
+        [value]="messageContent"
+        >
+    </textarea>
+<!--
+    <textarea
+      #sendField
+      class="form-control-border-light message_footer_textarea_part"
+      formControlName="message"
+      placeholder="Type your message"
+      (keypress)="keyPressed($event)"
+      [value]="messageContent"
+      >
+    </textarea>
+  -->
+    <button #submitButton class="btn btn-primary btn-icon-square" style="margin-left: 5px;" type="submit" [disabled]="isMessageSending">
+      <span>
+        <svg width="31" height="31">
+          <use xlink:href="../../../../../../assets/images/sprite.svg#send"></use>
+        </svg>
+      </span>
+    </button>
+</div>
+<!-- <div class="hints">
+  <span *ngIf="formError; else text" class="error-text">{{formError}}</span>
+
+  <ng-template #text>
+
+    <span *ngIf="modelForm.controls['attachment'].value; else symbolsCount">File selected</span>
+
+    <ng-template #symbolsCount>
+      <fmp-symbols-counter-component
+        [maxSymbols]="maxSymbols"
+        [value]="modelForm.controls['message'].value">
+      </fmp-symbols-counter-component>
+    </ng-template>
+
+  </ng-template>
+
+</div> -->
+
+</form>

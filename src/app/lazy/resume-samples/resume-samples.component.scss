@@ -1,0 +1,111 @@
+@import '../../styles/custom/variables';
+// import additional google fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.resume-samples-page {
+  padding-top: 40px;
+  background: #F1F1F1;
+
+  @media (min-width: $point) {
+    margin-top: $header-height-desk;
+  }
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      width: 750px;
+    }
+
+    @media (min-width: 992px) {
+      width: 970px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 1170px;
+    }
+
+    @media (min-width: 1400px) {
+      width: 1300px;
+    }
+
+    .resume-samples-item {
+      border: 2px solid $brand-secondary;
+
+      &.resume-samples-mid {
+        margin-top: 100px;
+      }
+
+      .resume-samples-header {
+        width: 100%;
+        padding: 50px 0;
+        background: $brand-secondary;
+
+        h2 {
+          width: 100%;
+          text-align: center;
+          color: white;
+          font-weight: bold;
+          font-family: "Roboto Slab", serif;
+        }
+      }
+
+      .resume-samples-body {
+        margin: 40px 15%;
+
+        .resume-samples-panel {
+
+          p {
+            margin: 0 30px;
+          }
+
+          .resume-samples-list {
+            margin: 30px auto;
+
+            .resume-samples-ul {
+
+              li {
+                width: 100%;
+                margin-bottom: 10px;
+              }
+
+              @media (min-width: 1030px) {
+                li.resume-item-li {
+                  width: 47%;
+                  margin-right: 10px;
+                  float: left;
+                }
+              }
+            }
+          }
+
+          .resume-samples-service-wrapper {
+            margin: 20px;
+            text-align: center;
+
+            .resume-samples-service {
+              padding: 10px;
+              background: $brand-secondary;
+              color: white;
+              text-decoration: none;
+              cursor: pointer;
+              font-weight: bold;
+            }
+
+          }
+        }
+      }
+
+
+    }
+
+  }
+}

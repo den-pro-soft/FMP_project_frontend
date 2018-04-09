@@ -1,0 +1,109 @@
+<div class="job-item">
+  <div class="logo-position-company">
+    
+    <img class="job-item-logo" [src]="'//logo.clearbit.com/'+item.linkForAvatar" (error)="logoError($event)" (click)="openCompanyLink(item.link)">
+    <div class="position-company">
+      <span class="position text-overflow">
+        <a [href]="item.link" target="_blank">{{item.position}}</a>
+      </span>
+      <span class="company text-overflow">{{item.company}}</span>
+    </div>
+    <span class="edit-job-span" (click)="editJob(item)">
+      <svg (click)="editJob(item)">
+        <use xlink:href="../../../../../../assets/images/sprite.svg#edit"></use>
+      </svg>
+    </span>
+    
+  </div>
+  <div class="box-right">
+      <div class="middle_menu_text">
+        <div class="download-file middle_menu_text_label">
+            <div style="width: 100%;">
+                <label
+                *ngIf="!item.attachment"
+                class="link link-line-remove-center middle_menu_text_label_detail"
+                (click)="uploadCoverLetterClick()">
+                Cover Letter
+                </label>
+                <input #uploadCover type="file" (change)="uploadCoverLetter($event)">
+                <div class="file" *ngIf="item.attachment">
+                  <div class="attachment_name_area_bottom">
+                    <ul>
+                      <li>
+                          <a class="link link-line-remove-center text-overflow"
+                          [href]="item.attachment"
+                          download=""
+                          (click)="downloadAttachment(item, $event)">{{item.attachment_name}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                
+                  <span class="middle_menu_attach"  (click)="removeCoverLetter(item)">
+                      <svg width="15" height="15">
+                      <use xlink:href="../../../../../../assets/images/sprite.svg#close"></use>
+                      </svg>
+                  </span>
+                    </div>
+                </div>
+                <div style="width: 100%;margin-top: 20px;">
+                    <label
+                            class="link link-line-remove-center middle_menu_notes_label_detail"
+                            (click)="editJobNote(item)" *ngIf="item?.jobdescription; else emptyNoteSection">
+                        Notes !!!
+                    </label>
+                    <ng-template #emptyNoteSection>
+                        <label
+                                class="link link-line-remove-center middle_menu_notes_label_detail"
+                                (click)="editJobNote(item)">
+                            Notes
+                        </label>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="apply-area" style="width: 70%; display: flex;">
+            <fmp-custom-dropdown-component
+                    class="dropdown-holder middle_menu_text_fmp"
+                    [type]="'jobs'"
+                    [values]="statuses"
+                    [selectedValue]="item.status"
+                    (valueSelected)="statusChanged($event)" title="">
+            </fmp-custom-dropdown-component>
+            <fmp-custom-dropdown-component
+                    class="dropdown-holder middle_menu_text_fmp job_item_dropdown_number"
+                    [type]="'jobs'"
+                    [values]="rates"
+                    [selectedValue]="item.rate"
+                    (valueSelected)="rateChanged($event)" title="">
+            </fmp-custom-dropdown-component>
+            <div class="choice-liked">
+                <label class="custom-choice custom-choice-blue">
+                    <input type="checkbox" [ngModel]="item.checked" (change)="applyStatusChanged($event)">
+                    <span class="indicator">
+                        <svg>
+                            <use xlink:href="../../../../../../assets/images/sprite-anim.svg#checkbox"></use>
+                        </svg>
+                    </span>
+                    <span class="text-overflow">Apply</span>
+                </label>
+                <p class="text-liked bottom">
+                    <span *ngIf="item?.section === 'applied'; else likedSection">
+                        Applied: {{item.applied_date | date: 'MMMM d, y'}}
+                    </span>
+                </p>
+            </div>
+        </div>
+        <ng-template #likedSection>
+            <span *ngIf="item.added_by !== 'user'">FMP</span>
+            <span *ngIf="item.added_by === 'user'">You</span>
+            Added: {{item.date | date: 'MMMM d, y'}}
+        </ng-template>
+    </div>
+    <span class="close" (click)="removeJob(item)">
+        <svg width="15" height="15">
+            <use xlink:href="../../../../../../assets/images/sprite.svg#close"></use>
+        </svg>
+    </span>
+    <div class="job-item-splitter job-item-splitter-1"></div>
+    <div class="job-item-splitter job-item-splitter-2"></div>
+</div>

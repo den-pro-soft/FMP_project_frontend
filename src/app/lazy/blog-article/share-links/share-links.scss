@@ -1,0 +1,66 @@
+@import '../../../styles/custom/variables';
+
+.social_align_margin_layout{
+  margin-right: -90px;
+  @media (max-width: 500px) {
+    margin-right: -70px;
+  }
+  @media (max-width: 400px) {
+    margin-right: -50px;
+  }
+}
+
+.share-links {
+  display: flex;
+
+  li {
+    margin: 0 5px;
+  }
+
+  .icon {
+    &-fb {
+      width: 12px;
+      height: 26px;
+
+      @media (min-width: $point) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    &-tw {
+      width: 20px;
+      height: 17px;
+
+      @media (min-width: $point) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    &-in {
+      width: 20px;
+      height: 20px;
+
+      @media (min-width: $point) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    &-mail {
+      width: 20px;
+      height: 20px;
+
+      @media (min-width: $point) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+  @media (min-width: $point) {
+    // flex-direction: column;
+
+    li {
+      margin: 0 15px 0 0;
+    }
+  }
+}

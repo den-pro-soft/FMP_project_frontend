@@ -1,0 +1,110 @@
+@import '../../styles/custom/variables';
+// import additional google fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+#getstarted_form {
+
+  h1.header {
+    display: none;
+  }
+
+  input {
+    background-color: $blue-light;
+    border: none;
+  }
+
+  input:focus {
+    border: 1px solid $brand-secondary;
+  }
+
+  .chooser {
+    width: 100%;
+    margin-bottom: 14px;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #4d4d4d;
+
+    @media (min-width: $point) {
+      margin-bottom: 21px;
+    }
+
+    @media (max-height: 768px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .form_label {
+    span, input, select {
+      display: block;
+      float: none;
+      width: 100%;
+      text-align: left;
+      color: #262626;
+      font-size: 14px;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+      line-height: 1.8;
+      word-wrap: break-word;
+    }
+  }
+
+  .form_label.ur {
+    span {
+      text-align: center;
+      cursor: pointer;
+      background: $brand-primary;
+      color: white;
+      margin-top: 20px;
+      padding: 5px;
+
+      &:hover {
+        background-color: white;
+        color: $brand-primary;
+        border: 1px solid $brand-primary;
+      }
+    }
+  }
+
+  .req-em {
+    display: block;
+    float: none;
+    width: 100%;
+    text-align: center;
+    color: #262626;
+    font-size: 12px;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+    word-wrap: break-word;
+    margin: 10px 0;
+  }
+
+  input#btn_next_bot {
+    background-color: $brand-primary;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    font-family: Roboto Slab,serif;
+    margin-left: 45px;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: $brand-primary;
+      border: 1px solid $brand-primary;
+    }
+  }
+
+  p#widget_error {
+    color: #f00;
+    font-weight: bold;
+    font-size: smaller;
+    text-align: center;
+  }
+
+}

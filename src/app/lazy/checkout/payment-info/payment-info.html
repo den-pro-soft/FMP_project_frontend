@@ -1,0 +1,53 @@
+<form [formGroup]="paymentForm" class="payment-info-holder" >
+    <div class = "form-group payment-information" autocomplete="none|false|no">
+        <p class="title">Payment Information</p>
+        <div class="pinfo_field">
+            <span>Name:</span>
+            <input class="form-control-border-light"    type="text" formControlName="name" placeholder="Name" autocomplete="organization-name" required>
+        </div>
+        <div class="pinfo_field">
+            <span>Email:</span>
+            <input class="form-control-border-light"    type="email" formControlName="email" placeholder="Email" autocomplete="organization-email" required>
+        </div>
+        <div class="pinfo_field">
+            <span>Address:</span>
+            <input class="form-control-border-light" formControlName="address" placeholder="Address" autocomplete="organization-address" required>
+        </div>
+        <div class="pinfo_field">
+            <span>City:</span>
+            <input class="form-control-border-light" formControlName="city" placeholder="City" autocomplete="organization-city">
+        </div>
+        <div class="row pinfo_field" *ngIf="orginCountry == 'United States'">
+            <label class="col-md-6 state">
+                <span>State:</span>
+                <input formControlName="state" class="form-control-border-light" placeholder="CA" autocomplete="organization-state" >
+            </label>
+            <label class="col-md-6 zip">
+                <span>Zip Code:</span>
+                <input class="form-control-border-light" formControlName="code" placeholder="Zip" autocomplete="organization-code" >
+            </label>
+        </div>
+
+        <div class="pinfo_field" *ngIf="orginCountry != 'United States'">
+            <label class="zip">
+                <span>Postal Code:</span>
+                <input class="form-control-border-light pCode" formControlName="code" placeholder="Postal" autocomplete="organization-postal" >
+            </label>
+        </div>
+        <div class="pinfo_field">
+            <span>Country:</span>
+            <div id="country" class="country" [ngClass]='flagState'>
+                <select formControlName="selCountry" [(ngModel)]="orginCountry" (click)="onChangeCountry()"  class="form-control-border-light" readonly onfocus="this.removeAttribute('readonly');">
+                    <option *ngFor="let item of countryNames">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="pinfo_field">
+            <span>Card:</span>
+            <ngx-stripe-card [options]="cardOptions"
+            #stripe_card
+            [elementsOptions]="elementsOptions"
+            ></ngx-stripe-card>
+        </div>
+    </div>
+</form>

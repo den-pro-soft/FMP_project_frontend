@@ -1,0 +1,23 @@
+<div class="custom-modal customer-editnotes-modal-middle">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="'resume-makeover'"></fmp-circle-icon-line>
+  </div>
+  <h3 class="title">Add Notes</h3>
+  <!-- <p class="message-text">Please add details for the specific job of interest</p> -->
+<form [formGroup]="modelForm" (submit)="saveNote()" class="form-holder">
+
+    <label class="form-group-content job-editnotes-title"> {{job.position}}</label>
+    <label class="form-group-content job-editnotes-company"> {{job.company}} </label>
+
+    <p class="form-group" >
+        <textarea formControlName="jobdescription" class="job-editnotes-description-text" placeholder="add notes..." >
+            {{job.jobdescription}}
+        </textarea>
+    </p>
+
+    <button class="btn btn-md btn-center btn-border-anim job-editnotes-information-btn">Save</button>
+</form>
+
+<fmp-modal-close-icon (click)="cancel()"></fmp-modal-close-icon> 
+
+</div>

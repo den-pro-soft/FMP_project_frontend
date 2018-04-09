@@ -1,0 +1,48 @@
+<h2>Messages</h2>
+
+<div class="chat" >
+  <ul #chatHolder class="chat-list" (click)="flagContextMenu=false">
+    <li *ngFor="let message of messages; trackBy: message?.id"
+      [ngClass]="{ 'incoming': message.author !== userId, 'outgoing': message.author === userId}">
+
+      <span class="day-time day" *ngIf="message?.showDay">{{message?.date | date: 'fullDate'}}</span>
+
+      <span class="day-time time" (mouseover)="showMenu"> {{message.sendername}} | {{message?.date | date: 'shortTime'}}
+        <svg *ngIf="message.author==userId" width="10" height="15" class="chat_more_option" (click)="showContextMenu(message.id,$event)" >
+          <use xlink:href="../../../../../assets/images/sprite.svg#chat-more-option"></use>
+        </svg>
+      </span> 
+      
+      <div>
+        <svg class="message-edit-marker-svg" *ngIf="message.edited" [ngClass]="{ 'message-marker-svg-show': message.author === userId }" >
+          <use xlink:href="../../../../../assets/images/sprite.svg#edit-pencil-icons"></use>
+        </svg>
+        <div class="message" style="display: inline-block;">
+          <p class="text-overflow" *ngIf="!message.attachment; else attachmentA"  [innerHTML]="message.message || 'No message text.'"></p>
+
+          <ng-template #attachmentA>
+            <div class="icon-doc">
+              <svg width="23" height="23">
+                <use xlink:href="../../../../../assets/images/sprite.svg#attachment"></use>
+              </svg>
+              <a class="text-overflow" [href]="message.attachment" (click)="downloadFile(message, $event)">{{message.message}}</a>
+                
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      
+    </li>
+  </ul>
+  <div class="contextMenuDiv" id="contextMenuDiv" #contextMenuDivSel [hidden]="!flagContextMenu">
+    <li (click)="editMessage()">Edit</li>
+    <li (click)="deleteMessage()">Remove</li>
+  </div>
+  <fmp-send-box-component
+    [isMessageSending]="isSending"
+    [messageEditMode]="messageEditMode"
+    [messageContent]="messageContent"
+    (onMessageSend)="sendMessage($event)">
+  </fmp-send-box-component>
+
+</div>

@@ -1,0 +1,51 @@
+<div class="container user-profile-page box-light-reg">
+  <div class="box-light-content">
+    <h1>All Resources</h1>
+
+    <div class="accordion-progress-holder">
+
+      <ngb-accordion class="accordion accordion-profile" >
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+              Cover Letters
+          </ng-template>
+          <ng-template ngbPanelContent> 
+                <fmp-document-templates-component
+                  [templates]="getResourceByType('cover_letters')"
+                  (onTemplateDownload)="downloadTemplate($event)"
+                  (onTemplatePreview)="openPreview($event)">
+                </fmp-document-templates-component> 
+          </ng-template>
+        </ngb-panel>
+
+        <ngb-panel>
+            <ng-template ngbPanelTitle>
+                Follow-Up Emails
+            </ng-template>
+            <ng-template ngbPanelContent> 
+                    <fmp-document-templates-component
+                    [templates]="getResourceByType('follow_up_emails')"
+                    (onTemplateDownload)="downloadTemplate($event)"
+                    (onTemplatePreview)="openPreview($event)">
+                    </fmp-document-templates-component> 
+            </ng-template>
+        </ngb-panel>
+
+        <ngb-panel>
+            <ng-template ngbPanelTitle>
+                Thank You Emails
+            </ng-template>
+            <ng-template ngbPanelContent> 
+                    <fmp-document-templates-component
+                    [templates]="getResourceByType('thank_you_emails')"
+                    (onTemplateDownload)="downloadTemplate($event)"
+                    (onTemplatePreview)="openPreview($event)">
+                    </fmp-document-templates-component> 
+            </ng-template>
+        </ngb-panel>
+
+      </ngb-accordion> 
+    </div>
+
+  </div>
+</div>

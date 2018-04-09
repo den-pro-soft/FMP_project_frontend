@@ -1,0 +1,50 @@
+<header class="main-header"
+  *ngIf="isHeaderShow"
+  [ngClass]="{
+  'main-header-reg' : authState,
+  'main-header-unreg' : !authState ,
+  'main-header-unreg-lightest': isScrolled || headerClasses['main-header-unreg-lightest'] ,
+  'main-header-unreg-blue': headerClasses['main-header-unreg-blue']
+  }">
+
+  <fmp-header-component
+    [isAppLoading]="!isComponentInited"
+    [isScrolled]="isScrolled"
+    [scrolledStop]="scrolledToTop"
+    [isCareerAdvicePage]="isCareerAdvicePage"
+    [isHomeUrl]="isHomeUrl"
+    >
+  </fmp-header-component>
+
+  <div class="account_user_quote nav-desktop" *ngIf=" quoteContent && authState">
+    <div class="photo-info-holder account_user_quote_info_holder">
+      <div class="user-info account-user-info-set"  >
+        <p class="user-info-name">
+            <!-- {{quoteTitle}} -->
+            <span class="close account_user_quote_close_btn" (click)="closeQuoteToday()">
+              <svg width="15" height="15">
+                <use xlink:href="../assets/images/sprite.svg#close"></use>
+              </svg>
+            </span>
+        </p>
+        <p class="user-info-email-content">{{quoteContent}}</p>
+      </div>
+    </div>
+  </div>
+
+</header>
+<h1 *ngIf="pageH1Title" class="sr-only" [innerHTML]="pageH1Title"></h1>
+<main
+  [ngClass]="{
+  'main-p0': mainClasses['main-p0'],
+  'main-pb0': mainClasses['main-pb0'],
+  'main-blue': mainClasses['main-blue']
+  }">
+  <router-outlet></router-outlet>
+</main>
+<footer class="main-footer" *ngIf="isFooterShow">
+  <fmp-footer-component class="container-md"></fmp-footer-component>
+</footer>
+
+<fmp-basket-cart-component *ngIf="showBasket"></fmp-basket-cart-component>
+

@@ -1,0 +1,12 @@
+<div class="document-templates-holder">
+  <ul class="document-templates">
+    <li *ngFor="let template of templates">
+      <img [src]="template.preview" alt="template" [attr.alt]="template.name">
+      <p class="inline_template_doc_title">{{template.name}}</p>
+      <div class="btn-holder">
+        <button type="button" class="btn btn-xs btn-primary btn-center btn_document_font_resize" (click)="seeTemplatePreview(template)">View</button>
+        <button type="button" class="btn btn-xs btn-primary btn-center btn_document_font_resize" (click)="downloadTemplate($event, template)">Download</button>
+      </div>
+    </li>
+  </ul>
+</div>
